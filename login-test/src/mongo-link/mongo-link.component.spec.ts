@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CsvtryComponent } from './csvtry.component';
+import { MongoLinkComponent } from './mongo-link.component';
 
-describe('CsvtryComponent', () => {
-  let component: CsvtryComponent;
-  let fixture: ComponentFixture<CsvtryComponent>;
+describe('MongoLinkComponent', () => {
+  let component: MongoLinkComponent;
+  let fixture: ComponentFixture<MongoLinkComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CsvtryComponent ]
+      declarations: [ MongoLinkComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CsvtryComponent);
+    fixture = TestBed.createComponent(MongoLinkComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

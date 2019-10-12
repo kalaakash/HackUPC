@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 declare var FB: any;
 
 @Component({
@@ -7,10 +8,16 @@ declare var FB: any;
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  private cookieValue: string;
 
-  constructor() { }
-  
+  constructor(private cookieService: CookieService) { }
+
+  nameOfUser: any;
+
   ngOnInit() {
+
+    this.cookieService.set('cookie-name', 'cookie boi');
+    this.cookieValue = this.cookieService.get('cookie-name');
 
     (window as any).fbAsyncInit = function () {
       FB.init({
@@ -40,6 +47,19 @@ export class LoginComponent implements OnInit {
       if (response.authResponse) {
         //login success
         //login success code here
+          console.log(response.status);
+          console.log(response.authResponse.accessToken);
+          FB.api(
+            '/me',
+            'GET',
+            { "fields": "id,name,groups" },
+            function (response) {
+            // Insert your code here
+            this.nameOfUser = response.name;
+            console.log(response.name);
+            console.log(this.nameOfUser);
+          }
+        );
           this.goHome(); 
       }
       else {
